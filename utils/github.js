@@ -18,7 +18,7 @@ export const pushToGitHub = async ({
 }) => {
   const url = `https://api.github.com/repos/${username}/${repo}/contents/${path}`;
 
-  console.log("📌 Backend pushing to:", url);
+  console.log(" Backend pushing to:", url);
 
   let sha = undefined;
 
@@ -31,18 +31,18 @@ export const pushToGitHub = async ({
     });
 
     sha = checkRes.data.sha;
-    console.log("📄 File exists, updating. SHA:", sha);
+    console.log(" File exists, updating. SHA:", sha);
 
   } catch (err) {
     if (err.response?.status === 404) {
-      console.log("📄 File does not exist, creating new.");
+      console.log(" File does not exist, creating new.");
     } else {
       console.error("❌ Error checking file:", err.response?.data);
       throw err;
     }
   }
 
-  // 🚀 Step 2: Create / Update file
+  //  Step 2: Create / Update file
   const body = {
     message: `Add/Update ${path}`,
     content: toBase64(content),
