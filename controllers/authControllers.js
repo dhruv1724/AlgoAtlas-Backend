@@ -39,7 +39,7 @@ export const githubCallback = async (req, res) => {
       return res.status(400).send("Invalid OAuth request");
     }
 
-    // 🔄 Exchange code → access token
+    //  Exchange code → access token
     const response = await axios.post(
         "https://github.com/login/oauth/access_token",
         null,
@@ -59,7 +59,7 @@ export const githubCallback = async (req, res) => {
     const accessToken = response.data.access_token;
 
     if (!accessToken) {
-      console.error("❌ No access token received:", response.data);
+      console.error(" No access token received:", response.data);
       return res.status(400).send("Failed to authenticate");
     }
 
@@ -96,7 +96,7 @@ export const logout = (req, res) => {
 
   delete userTokens[userId];
 
-  console.log("🚪 User logged out:", userId);
+  console.log(" User logged out:", userId);
 
   res.json({ success: true });
 };

@@ -14,8 +14,8 @@ export const pushCode = async (req, res) => {
       });
     }
 
-    console.log("🚀 Backend pushing:", slug);
-    console.log("📦 Companies:", companies);
+    console.log(" Backend pushing:", slug);
+    console.log(" Companies:", companies);
 
     // same sanitize logic as frontend
     const sanitizedCompanies = companies.map(c =>
@@ -27,7 +27,7 @@ export const pushCode = async (req, res) => {
 
     for (const company of sanitizedCompanies) {
       const path = `${company}/${slug}.txt`;
-      console.log("📁 Path:", path);
+      console.log(" Path:", path);
 
       await pushToGitHub({
         token,
